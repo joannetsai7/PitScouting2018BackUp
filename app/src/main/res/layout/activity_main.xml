@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <Space
+            android:layout_width="20px"
+            android:layout_height="match_parent"
+            android:layout_weight="0.05" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:weightSum="1"
+            android:layout_weight="0.05">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30px"
+                android:layout_weight="0.035" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="First Name: "
+                android:textSize= "15sp"
+                android:id="@+id/firstName"
+                android:layout_weight="0.045" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Last Name: "
+                android:textSize= "15sp"
+                android:id="@+id/lastName"
+                android:layout_weight="0.045" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Team Scouted: "
+                android:textSize= "15sp"
+                android:id="@+id/team"
+                android:layout_weight="0.045" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:weightSum="1"
+            android:layout_weight="0.8">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="25px"
+                android:layout_weight="0.025" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editFirstName"
+                android:hint="@string/first_name"
+                android:textSize= "15sp"
+                android:inputType="text"
+                android:singleLine="true"
+                android:layout_weight="0.04" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editLastName"
+                android:hint="@string/last_name"
+                android:textSize= "15sp"
+                android:inputType="text"
+                android:singleLine="true"
+                android:layout_weight="0.04" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTeam"
+                android:hint="Enter team scouted number"
+                android:textSize= "15sp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:layout_weight="0.04" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="25px"
+                android:layout_weight="0.020" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.715"
+                android:orientation="vertical"
+                android:id="@+id/add">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Teams Attending (* means already scouted): "
+                    android:textSize= "20sp"/>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Next"
+                android:id="@+id/nextButton"
+                android:layout_gravity="bottom|right"
+                android:layout_weight="0.12"
+                android:onClick="next"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

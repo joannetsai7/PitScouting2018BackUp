@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Pit Scouting</string>
+    <string name="first_name">Enter first name</string>
+    <string name="last_name">Enter last name</string>
+</resources>
