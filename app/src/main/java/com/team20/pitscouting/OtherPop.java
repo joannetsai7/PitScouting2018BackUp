@@ -10,6 +10,8 @@ import android.widget.EditText;
 /**
  * Created by JT on 1/25/17.
  */
+
+//Dont worry about this...Joanne will clean it up
 public class OtherPop extends Activity {
 
     @Override

@@ -16,6 +16,9 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.List;
 
+//DO NOT EDIT
+//THIS STAYS THE SAME EVERY YEAR
+
 public class ExpandableListAdapter extends BaseExpandableListAdapter{
 
     private Context context;

@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 
+//DO NOT EDIT
+//THIS STAYS THE SAME EVERY YEAR
 
 public class MainActivity extends AppCompatActivity {
     private static Data data = new Data();

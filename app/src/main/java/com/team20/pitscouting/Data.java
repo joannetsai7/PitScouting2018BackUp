@@ -17,6 +17,10 @@ import java.util.ArrayList;
 /**
  * Created by JT on 2/24/17.
  */
+
+//DO NOT EDIT
+//THIS STAYS THE SAME EVERY YEAR
+
 public class Data{
     private static ArrayList <String> short_data = new ArrayList<String>(); //Data without comments, names, etc
     private static ArrayList <String> full_data = new ArrayList<String>(); //All data

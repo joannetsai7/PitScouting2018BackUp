@@ -10,6 +10,8 @@ import android.widget.EditText;
 /**
  * Created by JT on 2/1/17.
  */
+
+//Dont worry about this...Joanne will clean it up
 public class CommentsPop extends Activity{
 
     @Override

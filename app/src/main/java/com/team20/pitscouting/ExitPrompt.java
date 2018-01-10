@@ -10,6 +10,10 @@ import android.widget.EditText;
 /**
  * Created by JT on 3/4/17.
  */
+
+//DO NOT EDIT
+//THIS STAYS THE SAME EVERY YEAR
+
 public class ExitPrompt extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
