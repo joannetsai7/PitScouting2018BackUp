@@ -31,273 +31,210 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_weight="0.05" />
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Height: "
-            android:textSize="20dp"/>
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/heightRobot">
-            <RadioButton
+            android:orientation="horizontal">
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tall (24 - 36in)"
-                android:textSize="18dp"
-                android:id="@+id/tallButton" />
-            <RadioButton
+                android:text="Robot Dimensions: "
+                android:textSize="20dp"/>
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Short (less than 24in)"
-                android:textSize="18dp"
-                android:id="@+id/shortButton" />
-        </RadioGroup>
+                android:hint="length"
+                android:textSize="20dp"
+                android:inputType="number"
+                android:id="@+id/length"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" by "
+                android:textSize="20dp"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="width"
+                android:textSize="20dp"
+                android:inputType="number"
+                android:id="@+id/width"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" by "
+                android:textSize="20dp"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="height"
+                android:textSize="20dp"
+                android:inputType="number"
+                android:id="@+id/height"/>
+        </LinearLayout>
 
-        <!--Weight and Carrying Capacity-->
+        <!--Weight-->
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:weightSum="1">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight=".8">
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Weight: "
-                    android:textSize= "20dp"
-                    android:id="@+id/weight"/>
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Fuel Carrying Capacity: "
-                    android:textSize= "20dp"
-                    android:id="@+id/carry"/>
-            </LinearLayout>
 
-            <LinearLayout
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight=".2">
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editWeight"
-                    android:textSize= "20dp"
-                    android:inputType="number"
-                    android:singleLine="true"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editCapacity"
-                    android:textSize= "20dp"
-                    android:inputType="number"
-                    android:singleLine="true" />
-            </LinearLayout>
+                android:text="Weight: "
+                android:textSize= "20dp"
+                android:layout_weight=".8"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/weight"
+                android:textSize= "20dp"
+                android:inputType="number"
+                android:singleLine="true"
+                android:layout_weight=".2"/>
         </LinearLayout>
 
-        <!--Gear-->
+        <!--Power Cube Collection-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gear: "
+            android:text="Power Cube Collection: "
             android:textSize="20dp"/>
-        <RadioGroup
+        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/gear">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yes"
-                android:textSize="18dp"
-                android:id="@+id/yesGearButton" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No"
-                android:textSize="18dp"
-                android:id="@+id/noGearButton" />
-        </RadioGroup>
+            android:text="Portal"
+            android:textSize="18dp"
+            android:id="@+id/portal"
+            android:checked="false"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exchange"
+            android:textSize="18dp"
+            android:id="@+id/exchange"
+            android:checked="false"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Floor"
+            android:textSize="18dp"
+            android:id="@+id/floor"
+            android:checked="false"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pyramid"
+            android:textSize="18dp"
+            android:id="@+id/pyramid"
+            android:checked="false"/>
 
-        <!--Low, High, Both, None Goal-->
+        <!--Scoring Power Cube-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Shooting: "
+            android:text="Scoring Power Cubes: "
             android:textSize="20dp"/>
-        <RadioGroup
+        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/shooting">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Low"
-                android:textSize="18dp"
-                android:id="@+id/lowButton" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="High"
-                android:textSize="18dp"
-                android:id="@+id/highButton" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Both"
-                android:textSize="18dp"
-                android:id="@+id/bothButton" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="None"
-                android:textSize="18dp"
-                android:id="@+id/noneButton" />
-        </RadioGroup>
+            android:text="Switch"
+            android:textSize="18dp"
+            android:id="@+id/gameSwitch"
+            android:checked="false"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scale"
+            android:textSize="18dp"
+            android:id="@+id/scale"
+            android:checked="false"/>
 
-        <!--Field Hopper Ability-->
+        <!--Cube Orientation-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Field Hopper Ability: "
+            android:text="Power Cube Orientation: "
             android:textSize="20dp"/>
-        <RadioGroup
+        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/hopper">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yes"
-                android:textSize="18dp"
-                android:id="@+id/yesHopperButton" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No"
-                android:textSize="18dp"
-                android:id="@+id/noHopperButton" />
-        </RadioGroup>
+            android:text="Flat (13 inches)"
+            android:textSize="18dp"
+            android:id="@+id/side"
+            android:checked="false"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Side (11 inches)"
+            android:textSize="18dp"
+            android:id="@+id/flat"
+            android:checked="false"/>
 
-        <!--Floor Fuel Collection-->
+        <!--Climbing Capabilities-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Floor Fuel Collection: "
+            android:text="Climbing: "
             android:textSize="20dp" />
-        <RadioGroup
+        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/floorFuelCollect">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yes"
-                android:textSize="18dp"
-                android:id="@+id/yesFloorFuelButton" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No"
-                android:textSize="18dp"
-                android:id="@+id/noFloorFuelButton" />
-        </RadioGroup>
-
-        <!--Floor Gear Collection-->
-        <TextView
+            android:text="Rung"
+            android:textSize="18dp"
+            android:id="@+id/rung"
+            android:checked="false"/>
+        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Floor Gear Collection: "
-            android:textSize="20dp"/>
-        <RadioGroup
+            android:text="Side"
+            android:textSize="18dp"
+            android:id="@+id/sideClimb"
+            android:checked="false"/>
+        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/floorGearCollect" >
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yes"
-                android:textSize="18dp"
-                android:id="@+id/yesFloorGearButton" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No"
-                android:textSize="18dp"
-                android:id="@+id/noFloorGearButton" />
-        </RadioGroup>
-
-        <!--Human Player Fuel Collection-->
-        <TextView
+            android:text="Ramp"
+            android:textSize="18dp"
+            android:id="@+id/ramp"
+            android:checked="false"/>
+        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Human Player Fuel Collection: "
-            android:textSize="20dp" />
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/humanPlayerFuel">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yes"
-                android:textSize="18dp"
-                android:id="@+id/yesHumanFuelButton" />
+            android:text="Lift Others"
+            android:textSize="18dp"
+            android:id="@+id/lift"
+            android:checked="false"/>
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No"
-                android:textSize="18dp"
-                android:id="@+id/noHumanFuelButton" />
-        </RadioGroup>
-
+        <!--Radio Button Group Example-->
         <!--Human Player Gear Collection-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Human Player Gear Collection: "
-            android:textSize="20dp"/>
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/humanPlayerGear">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yes"
-                android:textSize="18dp"
-                android:id="@+id/yesHumanGearButton" />
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Human Player Gear Collection: "-->
+            <!--android:textSize="20dp"/>-->
+        <!--<RadioGroup-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:id="@+id/humanPlayerGear">-->
+            <!--<RadioButton-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Yes"-->
+                <!--android:textSize="18dp"-->
+                <!--android:id="@+id/yesHumanGearButton" />-->
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No"
-                android:textSize="18dp"
-                android:id="@+id/noHumanGearButton" />
-        </RadioGroup>
+            <!--<RadioButton-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="No"-->
+                <!--android:textSize="18dp"-->
+                <!--android:id="@+id/noHumanGearButton" />-->
+        <!--</RadioGroup>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -307,34 +244,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight=".5">
-
-                <!--Climb-->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Climb: "
-                    android:textSize="20dp" />
-                <RadioGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/climb">
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Yes"
-                        android:textSize="18dp"
-                        android:id="@+id/yesClimbButton" />
-
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="No"
-                        android:textSize="18dp"
-                        android:id="@+id/noClimbButton" />
-                </RadioGroup>
+                android:orientation="vertical">
 
                 <!--Auto-->
                 <TextView
@@ -372,13 +282,6 @@
                     android:textSize="18dp"
                     android:id="@+id/auto3"
                     android:checked="false"/>
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4"
-                    android:textSize="18dp"
-                    android:id="@+id/auto4"
-                    android:checked="false"/>
 
                 <!--Auto Ability-->
                 <TextView
@@ -390,7 +293,7 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="NO Auto"
+                    android:text="No Auto"
                     android:textSize="18dp"
                     android:id="@+id/noAuto"
                     android:checked="false"/>
@@ -404,14 +307,14 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Break Base Line + Score Gear"
+                    android:text="Break Base Line + Score in Switch"
                     android:textSize="18dp"
                     android:id="@+id/scoreGear"
                     android:checked="false"/>
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Break Base Line + Score Fuel"
+                    android:text="Break Base Line + Score in Switch and Scale"
                     android:textSize="18dp"
                     android:id="@+id/scoreFuel"
                     android:checked="false"/>
@@ -441,11 +344,10 @@
             
             <!--Autonomous Positions Diagram-->
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/field"
-                android:src="@drawable/field"
-                android:layout_weight=".5"/>
+                android:src="@drawable/field"/>
         </LinearLayout>
 
         <Space

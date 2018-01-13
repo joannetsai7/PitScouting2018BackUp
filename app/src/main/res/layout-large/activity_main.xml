@@ -41,7 +41,7 @@
                     android:weightSum="1"
                     android:layout_weight="0.05">
 
-                    <!--Top Sapcer-->
+                    <!--Top Spacer-->
                     <Space
                         android:layout_width="match_parent"
                         android:layout_height="30px"

@@ -50,7 +50,7 @@ public class ScoutActivity extends AppCompatActivity{
     private String programLangChosen = "";
     private String comments = "";
 
-
+    //Do not change, stays the same every year
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,6 +120,7 @@ public class ScoutActivity extends AppCompatActivity{
         });
     }
 
+    //Do not change, stays the same every year
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         View view = getCurrentFocus();
@@ -134,6 +135,7 @@ public class ScoutActivity extends AppCompatActivity{
         return super.dispatchTouchEvent(ev);
     }
 
+    //Do not change, stays the same every year
     private void initData(){
         listDataHolder.add("Drive Train");
         driveTrain.add("4 wheel tank");
@@ -173,6 +175,7 @@ public class ScoutActivity extends AppCompatActivity{
         reassign();
     }
 
+    //Do not change, stays the same every year
     private void reassign(){
         listHash.put(listDataHolder.get(0),driveTrain);
         listHash.put(listDataHolder.get(1),wheel);
@@ -180,6 +183,7 @@ public class ScoutActivity extends AppCompatActivity{
         listHash.put(listDataHolder.get(3),programLang);
     }
 
+    //Do not change, stays the same every year
     private void setListViewHeight(ExpandableListView listView, int group) {
         ExpandableListAdapter listAdapter = (ExpandableListAdapter) listView.getExpandableListAdapter();
         int totalHeight = 0;
@@ -211,10 +215,12 @@ public class ScoutActivity extends AppCompatActivity{
         listView.requestLayout();
     }
 
+    //Dont worry about this...Joanne will clean it up
     public void comments(View view){
         startActivityForResult(new Intent(ScoutActivity.this,CommentsPop.class), 5);
     }
 
+    //Dont worry about this...Joanne will clean it up
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -261,6 +267,7 @@ public class ScoutActivity extends AppCompatActivity{
         }
     }
 
+    //CHANGE THIS
     public void done(View view){
         String shortOutput = "";
         String fullOutput = "";
@@ -287,195 +294,231 @@ public class ScoutActivity extends AppCompatActivity{
                             fullOutput += "\t" + programLangChosen;
                             shortOutput += "\t" + programLangChosen;
 
-                            RadioGroup height = (RadioGroup) findViewById(R.id.heightRobot);
-                            int heightID = height.getCheckedRadioButtonId();
-                            String dimensions = radioButton(view, heightID);
-                            if (!dimensions.equals("")) { //Height selected
-                                fullOutput += "\t" + dimensions;
-                                shortOutput += "\t" + dimensions;
+                            EditText editLength = (EditText) findViewById(R.id.length);
+                            String length = editLength.getText().toString();
+                            EditText editWidth = (EditText) findViewById(R.id.width);
+                            String width = editWidth.getText().toString();
+                            EditText editHeight = (EditText) findViewById(R.id.height);
+                            String height = editHeight.getText().toString();
+                            if (!length.equals("") && !width.equals("") && !height.equals("")) { //Dimensions are not entered
+                                int testLength = Integer.parseInt(length);
+                                int testWidth = Integer.parseInt(width);
+                                int testHeight = Integer.parseInt(height);
 
-                                EditText editWeight = (EditText) findViewById(R.id.editWeight);
-                                String weight = editWeight.getText().toString(); //Weight of robot
-                                if (!weight.equals("")) { //Weight is entered
-                                    int testWeight = Integer.parseInt(weight);
-                                    if (testWeight <= 120){
-                                        fullOutput += "\t" + weight;
-                                        shortOutput += "\t" + weight;
+                                if (testLength <= 33) { //Check length is within rules
+                                    if (testWidth <= 28) { //Check width is within rules
+                                        if (testHeight <= 55) { //Check height is within rules
+                                            fullOutput += "\t" + length + "\t" + width + "\t" + height;
+                                            shortOutput += "\t" + length + "\t" + width + "\t" + height;
 
-                                        EditText editCapacity = (EditText) findViewById(R.id.editCapacity);
-                                        String capacity = editCapacity.getText().toString(); //Fuel carrying capacity
-                                        if (!capacity.equals("")) { //Capacity is entered
-                                            fullOutput += "\t" + capacity;
-                                            shortOutput += "\t" + capacity;
+                                            EditText editWeight = (EditText) findViewById(R.id.weight);
+                                            String weight = editWeight.getText().toString(); //Weight of robot
+                                            if (!weight.equals("")) { //Weight is entered
+                                                int testWeight = Integer.parseInt(weight);
 
-                                            RadioGroup gear = (RadioGroup) findViewById(R.id.gear);
-                                            int gearID = gear.getCheckedRadioButtonId();
-                                            String chosenGear = radioButton(view, gearID);
-                                            if (!chosenGear.equals("")) { //Gear capability is selected
-                                                fullOutput += "\t" + chosenGear;
-                                                shortOutput += "\t" + chosenGear;
+                                                if (testWeight <= 120) {
+                                                    fullOutput += "\t" + weight;
+                                                    shortOutput += "\t" + weight;
 
-                                                RadioGroup shooting = (RadioGroup) findViewById(R.id.shooting);
-                                                int shootingID = shooting.getCheckedRadioButtonId();
-                                                String shootingCapability = radioButton(view, shootingID);
-                                                if (!shootingCapability.equals("")) { //Shooting capability is selected
-                                                    fullOutput += "\t" + shootingCapability;
-                                                    shortOutput += "\t" + shootingCapability;
+                                                    String cubeCollect = "";
+                                                    CheckBox portal = (CheckBox) findViewById(R.id.portal);
+                                                    cubeCollect += checkBox(portal, cubeCollect);
 
-                                                    RadioGroup hopper = (RadioGroup) findViewById(R.id.hopper);
-                                                    int hopperID = hopper.getCheckedRadioButtonId();
-                                                    String hopperCapability = radioButton(view, hopperID);
-                                                    if (!hopperCapability.equals("")) { //Hopper capability is selected
-                                                        fullOutput += "\t" + hopperCapability;
-                                                        shortOutput += "\t" + hopperCapability;
+                                                    CheckBox exchange = (CheckBox) findViewById(R.id.exchange);
+                                                    cubeCollect += checkBox(exchange, cubeCollect);
 
-                                                        RadioGroup floorFuelCollect = (RadioGroup) findViewById(R.id.floorFuelCollect);
-                                                        int floorFuelCollectID = floorFuelCollect.getCheckedRadioButtonId();
-                                                        String floorFuelCollection = radioButton(view, floorFuelCollectID);
-                                                        if (!floorFuelCollection.equals("")) { //Floor Fuel Collection capability is selected
-                                                            fullOutput += "\t" + floorFuelCollection;
-                                                            shortOutput += "\t" + floorFuelCollection;
+                                                    CheckBox floor = (CheckBox) findViewById(R.id.floor);
+                                                    cubeCollect += checkBox(floor, cubeCollect);
 
-                                                            RadioGroup floorGearCollect = (RadioGroup) findViewById(R.id.floorGearCollect);
-                                                            int floorGearCollectID = floorGearCollect.getCheckedRadioButtonId();
-                                                            String floorGearCollection = radioButton(view, floorGearCollectID);
-                                                            if (!floorGearCollection.equals("")) { //Floor Gear Collection capability is selected
-                                                                fullOutput += "\t" + floorGearCollection;
-                                                                shortOutput += "\t" + floorFuelCollection;
+                                                    CheckBox pyramid = (CheckBox) findViewById(R.id.pyramid);
+                                                    cubeCollect += checkBox(pyramid, cubeCollect);
 
-                                                                RadioGroup humanPlayerFuel = (RadioGroup) findViewById(R.id.humanPlayerFuel);
-                                                                int humanPlayerFuelID = humanPlayerFuel.getCheckedRadioButtonId();
-                                                                String hpFuel = radioButton(view, humanPlayerFuelID);
-                                                                if (!hpFuel.equals("")) { //Human Player Fuel Collection capability is selected
-                                                                    fullOutput += "\t" + hpFuel;
-                                                                    shortOutput += "\t" + hpFuel;
+                                                    if (!cubeCollect.equals("")) { //Power Cube Collection is entered
+                                                        fullOutput += "\t" + cubeCollect;
+                                                        shortOutput += "\t" + cubeCollect;
 
-                                                                    RadioGroup humanPlayerGear = (RadioGroup) findViewById(R.id.humanPlayerGear);
-                                                                    int humanPlayerGearID = humanPlayerGear.getCheckedRadioButtonId();
-                                                                    String hpGear = radioButton(view, humanPlayerGearID);
-                                                                    if (!hpGear.equals("")) { //Human Player Gear Collection capability is selected
-                                                                        fullOutput += "\t" + hpGear;
-                                                                        shortOutput += "\t" + hpGear;
+                                                        String cubeScore = "";
+                                                        CheckBox gameSwitch = (CheckBox) findViewById(R.id.gameSwitch);
+                                                        cubeScore += checkBox(gameSwitch, cubeScore);
 
-                                                                        RadioGroup climbBUT = (RadioGroup) findViewById(R.id.climb);
-                                                                        int climbID = climbBUT.getCheckedRadioButtonId();
-                                                                        String climb = radioButton(view, climbID);
-                                                                        if (!climb.equals("")) { //Climb capability is selected
-                                                                            fullOutput += "\t" + climb;
-                                                                            shortOutput += "\t" + climb;
+                                                        CheckBox scale = (CheckBox) findViewById(R.id.scale);
+                                                        cubeScore += checkBox(scale, cubeScore);
+                                                        if (!cubeScore.equals("")) { //Power Cube Scoring capabilities is selected
+                                                            fullOutput += "\t" + cubeScore;
+                                                            shortOutput += "\t" + cubeScore;
 
-                                                                            String autoPositions = "";
-                                                                            CheckBox auto1 = (CheckBox) findViewById(R.id.auto1);
-                                                                            autoPositions += checkBox(view, auto1, autoPositions);
+                                                            String cubePickUp = "";
+                                                            CheckBox side = (CheckBox) findViewById(R.id.side);
+                                                            cubePickUp += checkBox(side, cubePickUp);
 
-                                                                            CheckBox auto2 = (CheckBox) findViewById(R.id.auto2);
-                                                                            autoPositions += checkBox(view, auto2, autoPositions);
+                                                            CheckBox flat = (CheckBox) findViewById(R.id.flat);
+                                                            cubePickUp += checkBox(flat, cubePickUp);
+                                                            if (!cubePickUp.equals("")) { //Power Cube Orientation capabilities is selected
+                                                                fullOutput += "\t" + cubePickUp;
+                                                                shortOutput += "\t" + cubePickUp;
 
-                                                                            CheckBox auto3 = (CheckBox) findViewById(R.id.auto3);
-                                                                            autoPositions += checkBox(view, auto3, autoPositions);
+                                                                String climb = "";
+                                                                CheckBox rung = (CheckBox) findViewById(R.id.rung);
+                                                                climb += checkBox(side, climb);
 
-                                                                            CheckBox auto4 = (CheckBox) findViewById(R.id.auto4);
-                                                                            autoPositions += checkBox(view, auto4, autoPositions);
-                                                                            if (!autoPositions.equals("")) { //Auto Preference is selected
-                                                                                fullOutput += "\t" + autoPositions;
-                                                                                shortOutput += "\t" + autoPositions;
+                                                                CheckBox sideClimb = (CheckBox) findViewById(R.id.sideClimb);
+                                                                climb += checkBox(flat, climb);
 
-                                                                                String autoAbility = "";
-                                                                                CheckBox noAuto = (CheckBox) findViewById(R.id.noAuto);
-                                                                                autoAbility += checkBox(view, noAuto, autoAbility);
+                                                                CheckBox ramp = (CheckBox) findViewById(R.id.ramp);
+                                                                climb += checkBox(ramp, climb);
 
-                                                                                CheckBox baseLine = (CheckBox) findViewById(R.id.baseLine);
-                                                                                autoAbility += checkBox(view, baseLine, autoAbility);
+                                                                CheckBox lift = (CheckBox) findViewById(R.id.lift);
+                                                                climb += checkBox(lift, climb);
+                                                                if (!climb.equals("")) { //Climbing capability is selected
+                                                                    fullOutput += "\t" + climb;
+                                                                    shortOutput += "\t" + climb;
 
-                                                                                CheckBox scoreGear = (CheckBox) findViewById(R.id.scoreGear);
-                                                                                autoAbility += checkBox(view, scoreGear, autoAbility);
+                                                                    RadioGroup floorFuelCollect = (RadioGroup) findViewById(R.id.floorFuelCollect);
+                                                                    int floorFuelCollectID = floorFuelCollect.getCheckedRadioButtonId();
+                                                                    String floorFuelCollection = radioButton(floorFuelCollectID);
+                                                                    if (!floorFuelCollection.equals("")) { //Floor Fuel Collection capability is selected
+                                                                        fullOutput += "\t" + floorFuelCollection;
+                                                                        shortOutput += "\t" + floorFuelCollection;
 
-                                                                                CheckBox scoreFuel = (CheckBox) findViewById(R.id.scoreFuel);
-                                                                                autoAbility += checkBox(view, scoreFuel, autoAbility);
+                                                                        RadioGroup floorGearCollect = (RadioGroup) findViewById(R.id.floorGearCollect);
+                                                                        int floorGearCollectID = floorGearCollect.getCheckedRadioButtonId();
+                                                                        String floorGearCollection = radioButton(floorGearCollectID);
+                                                                        if (!floorGearCollection.equals("")) { //Floor Gear Collection capability is selected
+                                                                            fullOutput += "\t" + floorGearCollection;
+                                                                            shortOutput += "\t" + floorFuelCollection;
 
-                                                                                CheckBox fuelOnly = (CheckBox) findViewById(R.id.fuelOnly);
-                                                                                autoAbility += checkBox(view, fuelOnly, autoAbility);
+                                                                            RadioGroup humanPlayerFuel = (RadioGroup) findViewById(R.id.humanPlayerFuel);
+                                                                            int humanPlayerFuelID = humanPlayerFuel.getCheckedRadioButtonId();
+                                                                            String hpFuel = radioButton(humanPlayerFuelID);
+                                                                            if (!hpFuel.equals("")) { //Human Player Fuel Collection capability is selected
+                                                                                fullOutput += "\t" + hpFuel;
+                                                                                shortOutput += "\t" + hpFuel;
 
-                                                                                CheckBox scoreFuelGear = (CheckBox) findViewById(R.id.scoreFuelGear);
-                                                                                autoAbility += checkBox(view, scoreFuelGear, autoAbility);
-                                                                                if (!autoAbility.equals("")) { //Auto Ability is selected
-                                                                                    fullOutput += "\t" + autoAbility;
-                                                                                    shortOutput += "\t" + autoAbility;
+                                                                                RadioGroup humanPlayerGear = (RadioGroup) findViewById(R.id.humanPlayerGear);
+                                                                                int humanPlayerGearID = humanPlayerGear.getCheckedRadioButtonId();
+                                                                                String hpGear = radioButton(humanPlayerGearID);
+                                                                                if (!hpGear.equals("")) { //Human Player Gear Collection capability is selected
+                                                                                    fullOutput += "\t" + hpGear;
+                                                                                    shortOutput += "\t" + hpGear;
 
-                                                                                    if (!comments.equals("")){//Any comments?
-                                                                                        fullOutput += "\t" + comments;
-                                                                                    } else {
-                                                                                        fullOutput += "\tN/A";
-                                                                                    }
+                                                                                        String autoPositions = "";
+                                                                                        CheckBox auto1 = (CheckBox) findViewById(R.id.auto1);
+                                                                                        autoPositions += checkBox(auto1, autoPositions);
 
-                                                                                    CheckBox unreliableBox = (CheckBox) findViewById(R.id.unreliable);
-                                                                                    String unreliablity = "";
-                                                                                    System.err.println("Unreliable?");
-                                                                                    unreliablity += checkBox(view, unreliableBox, unreliablity);
-                                                                                    if (!unreliablity.equals("")){
-                                                                                        fullOutput += "\tYes";
-                                                                                    } else {
-                                                                                        fullOutput += "\tNo";
-                                                                                    }
-                                                                                    //Done, everything is filled out
-                                                                                    data.save(shortOutput, fullOutput);
+                                                                                        CheckBox auto2 = (CheckBox) findViewById(R.id.auto2);
+                                                                                        autoPositions += checkBox(auto2, autoPositions);
 
-                                                                                    finish();
+                                                                                        CheckBox auto3 = (CheckBox) findViewById(R.id.auto3);
+                                                                                        autoPositions += checkBox(auto3, autoPositions);
+                                                                                        if (!autoPositions.equals("")) { //Auto Preference is selected
+                                                                                            fullOutput += "\t" + autoPositions;
+                                                                                            shortOutput += "\t" + autoPositions;
+
+                                                                                            String autoAbility = "";
+                                                                                            CheckBox noAuto = (CheckBox) findViewById(R.id.noAuto);
+                                                                                            autoAbility += checkBox(noAuto, autoAbility);
+
+                                                                                            CheckBox baseLine = (CheckBox) findViewById(R.id.baseLine);
+                                                                                            autoAbility += checkBox(baseLine, autoAbility);
+
+                                                                                            CheckBox scoreGear = (CheckBox) findViewById(R.id.scoreGear);
+                                                                                            autoAbility += checkBox(scoreGear, autoAbility);
+
+                                                                                            CheckBox scoreFuel = (CheckBox) findViewById(R.id.scoreFuel);
+                                                                                            autoAbility += checkBox(scoreFuel, autoAbility);
+
+                                                                                            CheckBox fuelOnly = (CheckBox) findViewById(R.id.fuelOnly);
+                                                                                            autoAbility += checkBox(fuelOnly, autoAbility);
+
+                                                                                            CheckBox scoreFuelGear = (CheckBox) findViewById(R.id.scoreFuelGear);
+                                                                                            autoAbility += checkBox(scoreFuelGear, autoAbility);
+                                                                                            if (!autoAbility.equals("")) { //Auto Ability is selected
+                                                                                                fullOutput += "\t" + autoAbility;
+                                                                                                shortOutput += "\t" + autoAbility;
+
+                                                                                                if (!comments.equals("")) {//Any comments?
+                                                                                                    fullOutput += "\t" + comments;
+                                                                                                } else {
+                                                                                                    fullOutput += "\tN/A";
+                                                                                                }
+
+                                                                                                CheckBox unreliableBox = (CheckBox) findViewById(R.id.unreliable);
+                                                                                                String unreliablity = "";
+                                                                                                System.err.println("Unreliable?");
+                                                                                                unreliablity += checkBox(unreliableBox, unreliablity);
+                                                                                                if (!unreliablity.equals("")) {
+                                                                                                    fullOutput += "\tYes";
+                                                                                                } else {
+                                                                                                    fullOutput += "\tNo";
+                                                                                                }
+                                                                                                //Done, everything is filled out
+                                                                                                data.save(shortOutput, fullOutput);
+
+                                                                                                finish();
+                                                                                            } else {
+                                                                                                System.err.println("Auto Ability is not selected");
+                                                                                                Toast.makeText(getApplicationContext(), "Auto Ability is not selected", Toast.LENGTH_SHORT).show();
+                                                                                            }
+                                                                                        } else {
+                                                                                            System.err.println("Preferred Auto Positions is not selected");
+                                                                                            Toast.makeText(getApplicationContext(), "Auto Positions is not selected", Toast.LENGTH_SHORT).show();
+                                                                                        }
+
                                                                                 } else {
-                                                                                    System.err.println("Auto Ability is not selected");
-                                                                                    Toast.makeText(getApplicationContext(), "Auto Ability is not selected", Toast.LENGTH_SHORT).show();
+                                                                                    System.err.println("Human Player Gear Collection capability is not selected");
+                                                                                    Toast.makeText(getApplicationContext(), "Human Player Gear Collection capability is not selected", Toast.LENGTH_SHORT).show();
                                                                                 }
                                                                             } else {
-                                                                                System.err.println("Preferred Auto Positions is not selected");
-                                                                                Toast.makeText(getApplicationContext(), "Auto Positions is not selected", Toast.LENGTH_SHORT).show();
+                                                                                System.err.println("Human Player Fuel Collection capability is not selected");
+                                                                                Toast.makeText(getApplicationContext(), "Human Player Fuel Collection capability is not selected", Toast.LENGTH_SHORT).show();
                                                                             }
                                                                         } else {
-                                                                            System.err.println("Climb capability is not selected");
-                                                                            Toast.makeText(getApplicationContext(), "Climbing capability is not selected", Toast.LENGTH_SHORT).show();
+                                                                            System.err.println("Floor Gear Collection capability is not selected");
+                                                                            Toast.makeText(getApplicationContext(), "Floor Gear Collection capability is not selected", Toast.LENGTH_SHORT).show();
                                                                         }
                                                                     } else {
-                                                                        System.err.println("Human Player Gear Collection capability is not selected");
-                                                                        Toast.makeText(getApplicationContext(), "Human Player Gear Collection capability is not selected", Toast.LENGTH_SHORT).show();
+                                                                        System.err.println("Floor Fuel Collection capability is not selected");
+                                                                        Toast.makeText(getApplicationContext(), "Floor Fuel Collection capability is not selected", Toast.LENGTH_SHORT).show();
                                                                     }
                                                                 } else {
-                                                                    System.err.println("Human Player Fuel Collection capability is not selected");
-                                                                    Toast.makeText(getApplicationContext(), "Human Player Fuel Collection capability is not selected", Toast.LENGTH_SHORT).show();
+                                                                    System.err.println("Climbing capabilities is not selected");
+                                                                    Toast.makeText(getApplicationContext(), "Climbing capabilities is not selected", Toast.LENGTH_SHORT).show();
                                                                 }
                                                             } else {
-                                                                System.err.println("Floor Gear Collection capability is not selected");
-                                                                Toast.makeText(getApplicationContext(), "Floor Gear Collection capability is not selected", Toast.LENGTH_SHORT).show();
+                                                                System.err.println("Power Cube Orientation capabilities is not selected");
+                                                                Toast.makeText(getApplicationContext(), "Power Cube Orientation capabilities is not selected", Toast.LENGTH_SHORT).show();
                                                             }
                                                         } else {
-                                                            System.err.println("Floor Fuel Collection capability is not selected");
-                                                            Toast.makeText(getApplicationContext(), "Floor Fuel Collection capability is not selected", Toast.LENGTH_SHORT).show();
+                                                            System.err.println("Power Cube Scoring capabilities is not selected");
+                                                            Toast.makeText(getApplicationContext(), "Gear capability is not selected", Toast.LENGTH_SHORT).show();
                                                         }
                                                     } else {
-                                                        System.err.println("Hopper capability is not selected");
-                                                        Toast.makeText(getApplicationContext(), "Field Hopper capability is not selected", Toast.LENGTH_SHORT).show();
+                                                        System.err.println("Power Cube Collection capabilities is not entered");
+                                                        Toast.makeText(getApplicationContext(), "Fuel Carrying Capacity is not entered", Toast.LENGTH_SHORT).show();
                                                     }
                                                 } else {
-                                                    System.err.println("Shooting capability is not selected");
-                                                    Toast.makeText(getApplicationContext(), "Shooting capability is not selected", Toast.LENGTH_SHORT).show();
+                                                    System.err.println("Weight is too high");
+                                                    Toast.makeText(getApplicationContext(), "Weight is too high", Toast.LENGTH_SHORT).show();
                                                 }
                                             } else {
-                                                System.err.println("Gear capability is not selected");
-                                                Toast.makeText(getApplicationContext(), "Gear capability is not selected", Toast.LENGTH_SHORT).show();
+                                                System.err.println("Weight is not entered");
+                                                Toast.makeText(getApplicationContext(), "Weight is not entered", Toast.LENGTH_SHORT).show();
                                             }
                                         } else {
-                                            System.err.println("Fuel carrying capacity is not entered");
-                                            Toast.makeText(getApplicationContext(), "Fuel Carrying Capacity is not entered", Toast.LENGTH_SHORT).show();
+                                            System.err.println("Robot height is too tall");
+                                            Toast.makeText(getApplicationContext(), "Robot height is too tall", Toast.LENGTH_SHORT).show();
                                         }
-                                    } else {
-                                        System.err.println("Weight is too high");
-                                        Toast.makeText(getApplicationContext(), "Weight is too high", Toast.LENGTH_SHORT).show();
+                                    } else{
+                                        System.err.println("Robot width is too wide");
+                                        Toast.makeText(getApplicationContext(), "Robot width is too wide", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
-                                    System.err.println("Weight is not entered");
-                                    Toast.makeText(getApplicationContext(), "Weight is not entered", Toast.LENGTH_SHORT).show();
+                                    System.err.println("Robot length is too long");
+                                    Toast.makeText(getApplicationContext(), "Robot length is too long", Toast.LENGTH_SHORT).show();
                                 }
                             } else {
-                                System.err.println("Height is not selected");
-                                Toast.makeText(getApplicationContext(), "Height is not selected", Toast.LENGTH_SHORT).show();
+                                System.err.println("Dimensions are not entered");
+                                Toast.makeText(getApplicationContext(), "Dimensions are not entered", Toast.LENGTH_SHORT).show();
                             }
                         } else {
                             System.err.println("Programming Language is not selected");
@@ -499,7 +542,14 @@ public class ScoutActivity extends AppCompatActivity{
         }
     }
 
-    public String radioButton(View view, int selectedRadioButtonID){
+    //Do not change, stays the same every year
+    //Do not delete even if you do not end up using ir
+    //Parameter: id tag of the radio button
+    //Returns label of radio button
+    //How to use:
+    //RadioGroup floorFuelCollect = (RadioGroup) findViewById(R.id.floorFuelCollect);
+    //int floorFuelCollectID = floorFuelCollect.getCheckedRadioButtonId();
+    public String radioButton(int selectedRadioButtonID){
         if (selectedRadioButtonID != -1){
             RadioButton selectedRadioButton = (RadioButton) findViewById(selectedRadioButtonID);
             String selectedRadioButtonText = selectedRadioButton.getText().toString(); //Radio button checked
@@ -510,13 +560,18 @@ public class ScoutActivity extends AppCompatActivity{
 
     }
 
-    public String checkBox(View view, CheckBox check, String total){
+    //Do not change, stays the same every year
+    //Do not delete even if you do not end up using it
+    //Parameters: id tag of the checkbox, string of all checkboxes checked
+    //Needs string of all checkboxes because we have to separate all of the choices selected by a '|'
+    //Returns label of checkbox
+    public String checkBox(CheckBox check, String total){
         CheckBox unreliableBox = (CheckBox) findViewById(R.id.unreliable);
         if (check.isChecked()){
             int checkID = check.getId();
             String checkedBox = check.getText().toString(); //Box checked
             if (total.equals("")){
-                if (checkID == unreliableBox.getId()){
+                if (checkID == unreliableBox.getId()){ //The unreliable checkbox, since there is no label
                     return "Unreliable";
                 } else {
                     return checkedBox;
@@ -529,6 +584,8 @@ public class ScoutActivity extends AppCompatActivity{
         }
     }
 
+    //Do not change, stays the same every year
+    //Purpose: prevents user from pressing back on accident and losing everything
     @Override
     public void onBackPressed() {
         startActivityForResult(new Intent(ScoutActivity.this,ExitPrompt.class), 6);
