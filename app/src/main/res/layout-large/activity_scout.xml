@@ -309,28 +309,35 @@
                     android:layout_height="wrap_content"
                     android:text="Break Base Line + Score in Switch"
                     android:textSize="18dp"
-                    android:id="@+id/scoreGear"
+                    android:id="@+id/scoreSwitch"
+                    android:checked="false"/>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Break Base Line + Score in Scale"
+                    android:textSize="18dp"
+                    android:id="@+id/scoreScale"
                     android:checked="false"/>
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Break Base Line + Score in Switch and Scale"
                     android:textSize="18dp"
-                    android:id="@+id/scoreFuel"
+                    android:id="@+id/scoreSwitchScale"
                     android:checked="false"/>
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Score Fuel ONLY"
+                    android:text="Break Base Line + Score Switch Twice"
                     android:textSize="18dp"
-                    android:id="@+id/fuelOnly"
+                    android:id="@+id/scoreSwitch2"
                     android:checked="false"/>
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Break Base Line + Score Fuel and Gears"
+                    android:text="Break Base Line + Score Scale Twice"
                     android:textSize="18dp"
-                    android:id="@+id/scoreFuelGear"
+                    android:id="@+id/scoreScale2"
                     android:checked="false"/>
                 <Space
                     android:layout_width="match_parent"
@@ -355,27 +362,17 @@
             android:layout_height="30dp"
             android:layout_weight="0.05" />
 
-        <!--Comments and Submit-->
-        <LinearLayout
-            android:orientation="horizontal"
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Comments"
-                android:id="@+id/commentsButton"
-                android:layout_weight="0.12"
-                android:onClick="comments"/>
+            android:hint="Comments"/>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Submit"
-                android:id="@+id/submitButton"
-                android:layout_weight="0.12"
-                android:onClick="done"/>
-        </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:id="@+id/submitButton"
+            android:onClick="done"/>
+
     </LinearLayout>
 </ScrollView>

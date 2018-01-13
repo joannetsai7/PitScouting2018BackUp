@@ -421,17 +421,20 @@ public class ScoutActivity extends AppCompatActivity{
                                                                                             CheckBox baseLine = (CheckBox) findViewById(R.id.baseLine);
                                                                                             autoAbility += checkBox(baseLine, autoAbility);
 
-                                                                                            CheckBox scoreGear = (CheckBox) findViewById(R.id.scoreGear);
-                                                                                            autoAbility += checkBox(scoreGear, autoAbility);
+                                                                                            CheckBox scoreSwitch = (CheckBox) findViewById(R.id.scoreSwitch);
+                                                                                            autoAbility += checkBox(scoreSwitch, autoAbility);
 
-                                                                                            CheckBox scoreFuel = (CheckBox) findViewById(R.id.scoreFuel);
-                                                                                            autoAbility += checkBox(scoreFuel, autoAbility);
+                                                                                            CheckBox scoreScale = (CheckBox) findViewById(R.id.scoreScale);
+                                                                                            autoAbility += checkBox(scoreScale, autoAbility);
 
-                                                                                            CheckBox fuelOnly = (CheckBox) findViewById(R.id.fuelOnly);
-                                                                                            autoAbility += checkBox(fuelOnly, autoAbility);
+                                                                                            CheckBox scoreSwitchScale = (CheckBox) findViewById(R.id.scoreSwitchScale);
+                                                                                            autoAbility += checkBox(scoreSwitchScale, autoAbility);
 
-                                                                                            CheckBox scoreFuelGear = (CheckBox) findViewById(R.id.scoreFuelGear);
-                                                                                            autoAbility += checkBox(scoreFuelGear, autoAbility);
+                                                                                            CheckBox scoreSwitch2 = (CheckBox) findViewById(R.id.scoreSwitch2);
+                                                                                            autoAbility += checkBox(scoreSwitch2, autoAbility);
+
+                                                                                            CheckBox scoreScale2 = (CheckBox) findViewById(R.id.scoreScale2);
+                                                                                            autoAbility += checkBox(scoreScale2, autoAbility);
                                                                                             if (!autoAbility.equals("")) { //Auto Ability is selected
                                                                                                 fullOutput += "\t" + autoAbility;
                                                                                                 shortOutput += "\t" + autoAbility;
