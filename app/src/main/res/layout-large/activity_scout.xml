@@ -23,7 +23,6 @@
             android:layout_width="match_parent">
         </ExpandableListView>
 
-        <!--Integrate Camera option-->
         <!--Game logistics: Auto preferences-->
 
         <!--Dimensions of Robot-->
@@ -152,6 +151,13 @@
             android:textSize="18dp"
             android:id="@+id/scale"
             android:checked="false"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exchange"
+            android:textSize="18dp"
+            android:id="@+id/exchangeScore"
+            android:checked="false"/>
 
         <!--Cube Orientation-->
         <TextView
@@ -207,6 +213,13 @@
             android:text="Lift Others"
             android:textSize="18dp"
             android:id="@+id/lift"
+            android:checked="false"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="None"
+            android:textSize="18dp"
+            android:id="@+id/noClimb"
             android:checked="false"/>
 
         <!--Radio Button Group Example-->
@@ -365,7 +378,9 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Comments"/>
+            android:hint="Comments"
+            android:inputType="textCapSentences|textMultiLine|textFilter|textNoSuggestions"
+            android:maxLength="2000"/>
 
         <Button
             android:layout_width="match_parent"
