@@ -23,7 +23,6 @@
             android:layout_width="match_parent">
         </ExpandableListView>
 
-        <!--Game logistics: Auto preferences-->
 
         <!--Dimensions of Robot-->
         <Space
@@ -380,7 +379,8 @@
             android:layout_height="wrap_content"
             android:hint="Comments"
             android:inputType="textCapSentences|textMultiLine|textFilter|textNoSuggestions"
-            android:maxLength="2000"/>
+            android:maxLength="2000"
+            android:id="@+id/editComments"/>
 
         <Button
             android:layout_width="match_parent"
