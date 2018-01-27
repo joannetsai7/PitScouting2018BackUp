@@ -32,19 +32,22 @@ public class Data{
     private String fullBackup = "FULL_BACKUP_DATA.txt";
     private String teams = "TEAMS.txt";
     private File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) + "PitScouting/");
+    private File backupDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) + "MatchScouting/Backup/");
 
     public Data (){
         if(!dir.exists()){
             dir.mkdir();
+        }
+        if (!backupDir.exists()){
+            backupDir.mkdir();
         }
     }
 
     public void save(String shortOutput, String fullOutput){
         File mainFile = new File(dir, shortFile); //NUMBER DATA TEXT FILE
         File completeFile = new File(dir, fullFile); //COMPLETE DATA TEXT FILE
-        File backupFile = new File(dir, shortBackup); //NUMBER BACK UP DATA TEXT FILE
-        File completeBackupFile = new File(dir, fullBackup); //COMPLETE BACK UP DATA TEXT FILE
-
+        File backupFile = new File(backupDir, shortBackup); //NUMBER BACK UP DATA TEXT FILE
+        File completeBackupFile = new File(backupDir, fullBackup); //COMPLETE BACK UP DATA TEXT FILE
 
         /*
         IF ARRAY LIST IS EMPTY, CHECK IF THERE IS PREVIOUS DATA,

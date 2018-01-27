@@ -272,29 +272,30 @@ public class ScoutActivity extends AppCompatActivity{
     public void done(View view){
         String shortOutput = "";
         String fullOutput = "";
-        fullOutput += firstName + "\t" + lastName + "\t" + teamNumber;
         shortOutput += teamNumber;
 
-        if (!driveTrainChosen.equals("")) { //Drive Train type is selected
-            fullOutput += "\t" + driveTrainChosen;
+        //Drive Train
+        if (!driveTrainChosen.equals("")) {
             shortOutput += "\t" + driveTrainChosen;
 
-            if (!wheelChosen.equals("")) { //Wheel type is selected
-                fullOutput += "\t" + wheelChosen;
+            //Wheel Type
+            if (!wheelChosen.equals("")) {
                 shortOutput += "\t" + wheelChosen;
 
+                //Matching Drive Train and Wheel Type
                 if ((driveTrainChosen.equals("Mecanum") && wheelChosen.equals("Mecanum")) ||
                         (driveTrainChosen.equals("Omni drive") && wheelChosen.equals("Omni")) ||
-                        (!driveTrainChosen.equals("Omni drive") && !wheelChosen.equals("Omni") && !driveTrainChosen.equals("Mecanum") && !wheelChosen.equals("Mecanum"))){ //Drive Train and Wheel type match
+                        (!driveTrainChosen.equals("Omni drive") && !wheelChosen.equals("Omni") && !driveTrainChosen.equals("Mecanum") && !wheelChosen.equals("Mecanum"))){
 
-                    if (!driveMotorChosen.equals("")) { //Drive Train Motor is selected
-                        fullOutput += "\t" + driveMotorChosen;
+                    //Drive Train Motor
+                    if (!driveMotorChosen.equals("")) {
                         shortOutput += "\t" + driveMotorChosen;
 
-                        if (!programLangChosen.equals("")){ //Programming Language is selected
-                            fullOutput += "\t" + programLangChosen;
+                        //Programming Language
+                        if (!programLangChosen.equals("")){
                             shortOutput += "\t" + programLangChosen;
 
+                            //Dimensions
                             EditText editLength = (EditText) findViewById(R.id.length);
                             String length = editLength.getText().toString();
 
@@ -303,174 +304,213 @@ public class ScoutActivity extends AppCompatActivity{
 
                             EditText editHeight = (EditText) findViewById(R.id.height);
                             String height = editHeight.getText().toString();
-                            if (!length.equals("") && !width.equals("") && !height.equals("")) { //Dimensions are not entered
+                            if (!length.equals("") && !width.equals("") && !height.equals("")) {
                                 int testLength = Integer.parseInt(length);
                                 int testWidth = Integer.parseInt(width);
                                 int testHeight = Integer.parseInt(height);
-
                                 if (testLength <= 33) { //Check length is within rules
                                     if (testWidth <= 28) { //Check width is within rules
                                         if (testHeight <= 55) { //Check height is within rules
-                                            fullOutput += "\t" + length + "\t" + width + "\t" + height;
                                             shortOutput += "\t" + length + "\t" + width + "\t" + height;
 
+                                            //Weight
                                             EditText editWeight = (EditText) findViewById(R.id.weight);
-                                            String weight = editWeight.getText().toString(); //Weight of robot
+                                            String weight = editWeight.getText().toString();
                                             if (!weight.equals("")) { //Weight is entered
                                                 int testWeight = Integer.parseInt(weight);
-
                                                 if (testWeight <= 120) {
-                                                    fullOutput += "\t" + weight;
                                                     shortOutput += "\t" + weight;
 
-                                                    String cubeCollect = "";
-                                                    CheckBox portal = (CheckBox) findViewById(R.id.portal);
-                                                    cubeCollect += checkBox(portal, cubeCollect);
+                                                    //Wheel Diameter
+                                                    EditText editDiameter = (EditText) findViewById(R.id.diameter);
+                                                    String diameter = editDiameter.getText().toString();
+                                                    if (!diameter.equals("")) {
+                                                        shortOutput += "\t" + diameter;
 
-                                                    CheckBox exchange = (CheckBox) findViewById(R.id.exchange);
-                                                    cubeCollect += checkBox(exchange, cubeCollect);
+                                                        EditText editBumper = (EditText) findViewById(R.id.bumper);
+                                                        String bumper = editBumper.getText().toString();
+                                                        if (!bumper.equals("")) {
+                                                            int testbumper = Integer.parseInt(bumper);
+                                                            if (testbumper <= 7.5) {
+                                                                shortOutput += "\t" + bumper;
 
-                                                    CheckBox floor = (CheckBox) findViewById(R.id.floor);
-                                                    cubeCollect += checkBox(floor, cubeCollect);
+                                                                //Power Cube Collecting
+                                                                String cubeCollect = "";
+                                                                CheckBox portal = (CheckBox) findViewById(R.id.portal);
+                                                                cubeCollect += checkBox(portal, cubeCollect);
 
-                                                    CheckBox pyramid = (CheckBox) findViewById(R.id.pyramid);
-                                                    cubeCollect += checkBox(pyramid, cubeCollect);
+                                                                CheckBox exchange = (CheckBox) findViewById(R.id.exchange);
+                                                                cubeCollect += checkBox(exchange, cubeCollect);
 
-                                                    if (!cubeCollect.equals("")) { //Power Cube Collection is entered
-                                                        fullOutput += "\t" + cubeCollect;
-                                                        shortOutput += "\t" + cubeCollect;
+                                                                CheckBox floor = (CheckBox) findViewById(R.id.floor);
+                                                                cubeCollect += checkBox(floor, cubeCollect);
 
-                                                        String cubeScore = "";
-                                                        CheckBox gameSwitch = (CheckBox) findViewById(R.id.gameSwitch);
-                                                        cubeScore += checkBox(gameSwitch, cubeScore);
+                                                                CheckBox pyramid = (CheckBox) findViewById(R.id.pyramid);
+                                                                cubeCollect += checkBox(pyramid, cubeCollect);
+                                                                if (!cubeCollect.equals("")) {
+                                                                    shortOutput += "\t" + cubeCollect;
 
-                                                        CheckBox scale = (CheckBox) findViewById(R.id.scale);
-                                                        cubeScore += checkBox(scale, cubeScore);
+                                                                    //Power Cube Scoring
+                                                                    String cubeScore = "";
+                                                                    CheckBox gameSwitch = (CheckBox) findViewById(R.id.gameSwitch);
+                                                                    cubeScore += checkBox(gameSwitch, cubeScore);
 
-                                                        CheckBox exchangeScore = (CheckBox) findViewById(R.id.exchangeScore);
-                                                        cubeScore += checkBox(exchangeScore, cubeScore);
-                                                        if (!cubeScore.equals("")) { //Power Cube Scoring capabilities is selected
-                                                            fullOutput += "\t" + cubeScore;
-                                                            shortOutput += "\t" + cubeScore;
+                                                                    CheckBox scale = (CheckBox) findViewById(R.id.scale);
+                                                                    cubeScore += checkBox(scale, cubeScore);
 
-                                                            String cubePickUp = "";
-                                                            CheckBox side = (CheckBox) findViewById(R.id.side);
-                                                            cubePickUp += checkBox(side, cubePickUp);
+                                                                    CheckBox exchangeScore = (CheckBox) findViewById(R.id.exchangeScore);
+                                                                    cubeScore += checkBox(exchangeScore, cubeScore);
+                                                                    if (!cubeScore.equals("")) {
+                                                                        shortOutput += "\t" + cubeScore;
 
-                                                            CheckBox flat = (CheckBox) findViewById(R.id.flat);
-                                                            cubePickUp += checkBox(flat, cubePickUp);
-                                                            if (!cubePickUp.equals("")) { //Power Cube Orientation capabilities is selected
-                                                                fullOutput += "\t" + cubePickUp;
-                                                                shortOutput += "\t" + cubePickUp;
+                                                                        //Power Cube Orientation
+                                                                        String cubePickUp = "";
+                                                                        CheckBox side = (CheckBox) findViewById(R.id.side);
+                                                                        cubePickUp += checkBox(side, cubePickUp);
 
-                                                                String climb = "";
-                                                                CheckBox rung = (CheckBox) findViewById(R.id.rung);
-                                                                climb += checkBox(rung, climb);
+                                                                        CheckBox flat = (CheckBox) findViewById(R.id.flat);
+                                                                        cubePickUp += checkBox(flat, cubePickUp);
+                                                                        if (!cubePickUp.equals("")) {
+                                                                            shortOutput += "\t" + cubePickUp;
 
-                                                                CheckBox sideClimb = (CheckBox) findViewById(R.id.sideClimb);
-                                                                climb += checkBox(sideClimb, climb);
+                                                                            //Climbing
+                                                                            String climb = "";
+                                                                            CheckBox rung = (CheckBox) findViewById(R.id.rung);
+                                                                            climb += checkBox(rung, climb);
 
-                                                                CheckBox ramp = (CheckBox) findViewById(R.id.ramp);
-                                                                climb += checkBox(ramp, climb);
+                                                                            CheckBox sideClimb = (CheckBox) findViewById(R.id.sideClimb);
+                                                                            climb += checkBox(sideClimb, climb);
 
-                                                                CheckBox lift = (CheckBox) findViewById(R.id.lift);
-                                                                climb += checkBox(lift, climb);
+                                                                            CheckBox ramp = (CheckBox) findViewById(R.id.ramp);
+                                                                            climb += checkBox(ramp, climb);
 
-                                                                CheckBox noClimb = (CheckBox) findViewById(R.id.noClimb);
-                                                                String noClimbCheck = checkBox(noClimb, climb);
-                                                                climb += noClimbCheck;
-                                                                System.err.println("CLIMBING" + climb);
-                                                                if (!climb.equals("")) { //Climbing capability is selected
-                                                                    if ((noClimbCheck.equals("None") && climb.equals("None")) || noClimbCheck.equals("")) {
-                                                                        fullOutput += "\t" + climb;
-                                                                        shortOutput += "\t" + climb;
+                                                                            CheckBox lift = (CheckBox) findViewById(R.id.lift);
+                                                                            climb += checkBox(lift, climb);
 
-                                                                        String autoPositions = "";
-                                                                        CheckBox auto1 = (CheckBox) findViewById(R.id.auto1);
-                                                                        autoPositions += checkBox(auto1, autoPositions);
+                                                                            CheckBox noClimb = (CheckBox) findViewById(R.id.noClimb);
+                                                                            String noClimbCheck = checkBox(noClimb, climb);
+                                                                            climb += noClimbCheck;
+                                                                            if (!climb.equals("")) {
+                                                                                if ((noClimbCheck.equals("None") && climb.equals("None")) || noClimbCheck.equals("")) {
+                                                                                    shortOutput += "\t" + climb;
 
-                                                                        CheckBox auto2 = (CheckBox) findViewById(R.id.auto2);
-                                                                        autoPositions += checkBox(auto2, autoPositions);
+                                                                                    //Detect Color of Switch/Scale
+                                                                                    RadioGroup detectColor = (RadioGroup) findViewById(R.id.detectColor);
+                                                                                    int detectCapability = detectColor.getCheckedRadioButtonId();
+                                                                                    String detection = radioButton(detectCapability);
+                                                                                    if (!detection.equals("")) {
+                                                                                        shortOutput += "\t" + detection;
 
-                                                                        CheckBox auto3 = (CheckBox) findViewById(R.id.auto3);
-                                                                        autoPositions += checkBox(auto3, autoPositions);
-                                                                        if (!autoPositions.equals("")) { //Auto Preference is selected
-                                                                            fullOutput += "\t" + autoPositions;
-                                                                            shortOutput += "\t" + autoPositions;
+                                                                                        //Auto Position Preferences
+                                                                                        String autoPositions = "";
+                                                                                        CheckBox auto1 = (CheckBox) findViewById(R.id.auto1);
+                                                                                        autoPositions += checkBox(auto1, autoPositions);
 
-                                                                            String autoAbility = "";
-                                                                            CheckBox noAuto = (CheckBox) findViewById(R.id.noAuto);
-                                                                            autoAbility += checkBox(noAuto, autoAbility);
+                                                                                        CheckBox auto2 = (CheckBox) findViewById(R.id.auto2);
+                                                                                        autoPositions += checkBox(auto2, autoPositions);
 
-                                                                            CheckBox baseLine = (CheckBox) findViewById(R.id.baseLine);
-                                                                            autoAbility += checkBox(baseLine, autoAbility);
+                                                                                        CheckBox auto3 = (CheckBox) findViewById(R.id.auto3);
+                                                                                        autoPositions += checkBox(auto3, autoPositions);
+                                                                                        if (!autoPositions.equals("")) {
+                                                                                            shortOutput += "\t" + autoPositions;
 
-                                                                            CheckBox scoreSwitch = (CheckBox) findViewById(R.id.scoreSwitch);
-                                                                            autoAbility += checkBox(scoreSwitch, autoAbility);
+                                                                                            //Auto Abilities
+                                                                                            String autoAbility = "";
+                                                                                            CheckBox noAuto = (CheckBox) findViewById(R.id.noAuto);
+                                                                                            String noAutoCheck = checkBox(noAuto, autoAbility);
+                                                                                            autoAbility += noAutoCheck;
 
-                                                                            CheckBox scoreScale = (CheckBox) findViewById(R.id.scoreScale);
-                                                                            autoAbility += checkBox(scoreScale, autoAbility);
+                                                                                            CheckBox baseLine = (CheckBox) findViewById(R.id.baseLine);
+                                                                                            autoAbility += checkBox(baseLine, autoAbility);
 
-                                                                            CheckBox scoreSwitchScale = (CheckBox) findViewById(R.id.scoreSwitchScale);
-                                                                            autoAbility += checkBox(scoreSwitchScale, autoAbility);
+                                                                                            CheckBox scoreSwitch = (CheckBox) findViewById(R.id.scoreSwitch);
+                                                                                            autoAbility += checkBox(scoreSwitch, autoAbility);
 
-                                                                            CheckBox scoreSwitch2 = (CheckBox) findViewById(R.id.scoreSwitch2);
-                                                                            autoAbility += checkBox(scoreSwitch2, autoAbility);
+                                                                                            CheckBox scoreScale = (CheckBox) findViewById(R.id.scoreScale);
+                                                                                            autoAbility += checkBox(scoreScale, autoAbility);
 
-                                                                            CheckBox scoreScale2 = (CheckBox) findViewById(R.id.scoreScale2);
-                                                                            autoAbility += checkBox(scoreScale2, autoAbility);
-                                                                            if (!autoAbility.equals("")) { //Auto Ability is selected
-                                                                                fullOutput += "\t" + autoAbility;
-                                                                                shortOutput += "\t" + autoAbility;
+                                                                                            CheckBox scoreSwitchScale = (CheckBox) findViewById(R.id.scoreSwitchScale);
+                                                                                            autoAbility += checkBox(scoreSwitchScale, autoAbility);
 
-                                                                                EditText editComment = (EditText) findViewById(R.id.editComments);
-                                                                                String comments = editComment.getText().toString();
-                                                                                if (!comments.equals("")) {//Any comments?
-                                                                                    fullOutput += "\t" + comments;
+                                                                                            CheckBox scoreSwitch2 = (CheckBox) findViewById(R.id.scoreSwitch2);
+                                                                                            autoAbility += checkBox(scoreSwitch2, autoAbility);
+
+                                                                                            CheckBox scoreScale2 = (CheckBox) findViewById(R.id.scoreScale2);
+                                                                                            autoAbility += checkBox(scoreScale2, autoAbility);
+                                                                                            if (!autoAbility.equals("")) {
+                                                                                                if ((noAutoCheck.equals("None") && autoAbility.equals("None")) || noAutoCheck.equals("")) {
+                                                                                                    shortOutput += "\t" + autoAbility;
+
+                                                                                                    EditText editComment = (EditText) findViewById(R.id.editComments);
+                                                                                                    String comments = editComment.getText().toString();
+                                                                                                    if (!comments.equals("")) {//Any comments?
+                                                                                                        shortOutput += "\t" + comments;
+                                                                                                    } else {
+                                                                                                        shortOutput += "\tN/A";
+                                                                                                    }
+
+                                                                                                    CheckBox unreliableBox = (CheckBox) findViewById(R.id.unreliable);
+                                                                                                    String unreliablity = "";
+                                                                                                    System.err.println("Unreliable?");
+                                                                                                    unreliablity += checkBox(unreliableBox, unreliablity);
+                                                                                                    if (!unreliablity.equals("")) {
+                                                                                                        shortOutput += "\tYes";
+                                                                                                    } else {
+                                                                                                        shortOutput += "\tNo";
+                                                                                                    }
+
+                                                                                                    fullOutput += firstName + "\t" + lastName + "\t" + shortOutput;
+                                                                                                    //Done, everything is filled out
+                                                                                                    data.save(shortOutput, fullOutput);
+
+                                                                                                    finish();
+                                                                                                } else {
+                                                                                                    System.err.println("No other auto capabilities can be selected when no auto is selected");
+                                                                                                    Toast.makeText(getApplicationContext(), "No other auto capabilities can be selected when no auto is selected", Toast.LENGTH_SHORT).show();
+                                                                                                }
+                                                                                            } else {
+                                                                                                System.err.println("Auto Ability is not selected");
+                                                                                                Toast.makeText(getApplicationContext(), "Auto Ability is not selected", Toast.LENGTH_SHORT).show();
+                                                                                            }
+                                                                                        } else {
+                                                                                            System.err.println("Preferred Auto Positions is not selected");
+                                                                                            Toast.makeText(getApplicationContext(), "Auto Positions is not selected", Toast.LENGTH_SHORT).show();
+                                                                                        }
+                                                                                    } else {
+                                                                                        System.err.println("Color detection capability is not selected");
+                                                                                        Toast.makeText(getApplicationContext(), "Color detection capability is not selected", Toast.LENGTH_SHORT).show();
+                                                                                    }
                                                                                 } else {
-                                                                                    fullOutput += "\tN/A";
+                                                                                    System.err.println("No other climbing capabilities can be selected when none is selected");
+                                                                                    Toast.makeText(getApplicationContext(), "No other climbing capabilities can be selected when none is selected", Toast.LENGTH_SHORT).show();
                                                                                 }
-
-                                                                                CheckBox unreliableBox = (CheckBox) findViewById(R.id.unreliable);
-                                                                                String unreliablity = "";
-                                                                                System.err.println("Unreliable?");
-                                                                                unreliablity += checkBox(unreliableBox, unreliablity);
-                                                                                if (!unreliablity.equals("")) {
-                                                                                    fullOutput += "\tYes";
-                                                                                } else {
-                                                                                    fullOutput += "\tNo";
-                                                                                }
-                                                                                //Done, everything is filled out
-                                                                                data.save(shortOutput, fullOutput);
-
-                                                                                finish();
                                                                             } else {
-                                                                                System.err.println("Auto Ability is not selected");
-                                                                                Toast.makeText(getApplicationContext(), "Auto Ability is not selected", Toast.LENGTH_SHORT).show();
+                                                                                System.err.println("Climbing capabilities is not selected");
+                                                                                Toast.makeText(getApplicationContext(), "Climbing capabilities is not selected", Toast.LENGTH_SHORT).show();
                                                                             }
                                                                         } else {
-                                                                            System.err.println("Preferred Auto Positions is not selected");
-                                                                            Toast.makeText(getApplicationContext(), "Auto Positions is not selected", Toast.LENGTH_SHORT).show();
+                                                                            System.err.println("Power Cube Orientation capabilities is not selected");
+                                                                            Toast.makeText(getApplicationContext(), "Power Cube Orientation capabilities is not selected", Toast.LENGTH_SHORT).show();
                                                                         }
                                                                     } else {
-                                                                        System.err.println("No other climbing capabilities can be selected when none is selected");
-                                                                        Toast.makeText(getApplicationContext(), "No other climbing capabilities can be selected when none is selected", Toast.LENGTH_SHORT).show();
+                                                                        System.err.println("Power Cube Scoring capabilities is not selected");
+                                                                        Toast.makeText(getApplicationContext(), "Power Cube Scoring capabilities is not selected", Toast.LENGTH_SHORT).show();
                                                                     }
                                                                 } else {
-                                                                    System.err.println("Climbing capabilities is not selected");
-                                                                    Toast.makeText(getApplicationContext(), "Climbing capabilities is not selected", Toast.LENGTH_SHORT).show();
+                                                                    System.err.println("Power Cube Collection capabilities is not entered");
+                                                                    Toast.makeText(getApplicationContext(), "Power Cube Collection capabilities is not entered", Toast.LENGTH_SHORT).show();
                                                                 }
                                                             } else {
-                                                                System.err.println("Power Cube Orientation capabilities is not selected");
-                                                                Toast.makeText(getApplicationContext(), "Power Cube Orientation capabilities is not selected", Toast.LENGTH_SHORT).show();
+                                                                System.err.println("Bumper height is too high");
+                                                                Toast.makeText(getApplicationContext(), "Bumper height is too high", Toast.LENGTH_SHORT).show();
                                                             }
                                                         } else {
-                                                            System.err.println("Power Cube Scoring capabilities is not selected");
-                                                            Toast.makeText(getApplicationContext(), "Gear capability is not selected", Toast.LENGTH_SHORT).show();
+                                                            System.err.println("Bumper height is not entered");
+                                                            Toast.makeText(getApplicationContext(), "Bumper height is not entered", Toast.LENGTH_SHORT).show();
                                                         }
                                                     } else {
-                                                        System.err.println("Power Cube Collection capabilities is not entered");
-                                                        Toast.makeText(getApplicationContext(), "Fuel Carrying Capacity is not entered", Toast.LENGTH_SHORT).show();
+                                                        System.err.println("Wheel diameter is not entered");
+                                                        Toast.makeText(getApplicationContext(), "Wheel diameter is not entered", Toast.LENGTH_SHORT).show();
                                                     }
                                                 } else {
                                                     System.err.println("Weight is too high");
@@ -521,11 +561,12 @@ public class ScoutActivity extends AppCompatActivity{
     /*
     Do not change, stays the same every year
     Do not delete even if you do not end up using ir
-    Parameter: id tag of the radio button
-    Returns label of radio button
+    Parameter: id tag of the radio button selected
+    Returns label of radio button selected
     How to use:
     RadioGroup floorFuelCollect = (RadioGroup) findViewById(R.id.floorFuelCollect);
     int floorFuelCollectID = floorFuelCollect.getCheckedRadioButtonId();
+    String floorFuelCapability = radioButton(floorFuelCollectID);
     */
     public String radioButton(int selectedRadioButtonID){
         if (selectedRadioButtonID != -1){
