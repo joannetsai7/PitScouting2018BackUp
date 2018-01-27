@@ -26,7 +26,7 @@ public class ExitPrompt extends Activity{
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*.8),(int)(height*.1));
+        getWindow().setLayout((int)(width*.8),(int)(height*.15));
     }
 
 
