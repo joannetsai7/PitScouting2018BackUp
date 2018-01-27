@@ -6,22 +6,15 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 /**
- * Created by JT on 1/25/17.
+ * Created by JT on 1/27/18.
  */
-
-public class OtherPop extends Activity {
-
+public class ScoutPop extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.other_popwindow);
-
-        String prev = getIntent().getStringExtra("prev");
-        EditText content = (EditText) findViewById(R.id.content);
-        content.setText(prev, TextView.BufferType.EDITABLE);
+        setContentView(R.layout.scout_pop);
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -37,7 +30,7 @@ public class OtherPop extends Activity {
         EditText editContent = (EditText) findViewById(R.id.content);
         String content = editContent.getText().toString(); //other option
         Intent resultIntent = new Intent();
-        resultIntent.putExtra("Other", content);
+        resultIntent.putExtra("NumScouts", content);
         setResult(Activity.RESULT_OK, resultIntent);
         finish();
     }

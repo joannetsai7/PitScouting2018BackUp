@@ -1,5 +1,6 @@
 package com.team20.pitscouting;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -21,15 +22,17 @@ public class MainActivity extends AppCompatActivity {
     private static Data data = new Data();
     private static ArrayList<String> teams = new ArrayList<String>(); //List of teams
     private static ArrayList<String> finished = new ArrayList<String>(); //List of teams scouted
-    private int numScouts = 9;
+    private int amtScouts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        startActivityForResult(new Intent(this, ScoutPop.class), 1);
+
         View linearLayout =  findViewById(R.id.add); //Layout where the textviews for teams are going in
-        for(int i = 0; i < numScouts; i++ ) { //Adding a textview for each scout
+        for(int i = 0; i < amtScouts; i++ ) { //Adding a textview for each scout
             TextView textView = new TextView(this);
             textView.setId(i);
             textView.setTextSize(25);
@@ -41,6 +44,17 @@ public class MainActivity extends AppCompatActivity {
         assignTeams();
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode) {
+            case (1): {
+                String scouts = data.getStringExtra("NumScouts");
+                amtScouts = Integer.parseInt(scouts);
+                break;
+            }
+        }
+    }
     @Override
     public void onResume(){
         super.onResume();
@@ -125,16 +139,16 @@ public class MainActivity extends AppCompatActivity {
         }
         int numTeams;
         int location = 0; //Current team on in list
-        int extra = teams.size()%numScouts; //Left over teams if it doesn't divide equally
-        for(int i = 0; i < numScouts; i++ ) { //Split the teams into text views
+        int extra = teams.size()%amtScouts; //Left over teams if it doesn't divide equally
+        for(int i = 0; i < amtScouts; i++ ) { //Split the teams into text views
             TextView textView = (TextView) findViewById(i); //Text view of corresponding scout the teams are being assigned to
             String content = "";
             int scoutTeam = 0; //number of teams assigned to scout
             if (extra != 0){
                 extra--;
-                numTeams = teams.size()/numScouts + 1;
+                numTeams = teams.size()/amtScouts + 1;
             } else {
-                numTeams = teams.size()/numScouts;
+                numTeams = teams.size()/amtScouts;
             }
             for (; scoutTeam < numTeams; location++){ //Adding teams
                 if (!finishedTeams(location)){ //If team wasn't already scouted
