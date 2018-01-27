@@ -18,7 +18,6 @@
         <activity android:name=".ScoutActivity"></activity>
         <!--android:theme="@style/AppTheme.CustomTheme"-->
         <activity android:name=".OtherPop" android:theme="@style/AppTheme.CustomTheme"></activity>
-        <activity android:name=".CommentsPop" android:theme="@style/AppTheme.CustomTheme"></activity>
         <activity android:name=".ExitPrompt" android:theme="@style/AppTheme.CustomTheme"></activity>
     </application>
 </manifest>

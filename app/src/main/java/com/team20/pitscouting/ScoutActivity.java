@@ -48,7 +48,10 @@ public class ScoutActivity extends AppCompatActivity{
     private String wheelChosen = "";
     private String driveMotorChosen = "";
     private String programLangChosen = "";
-    private String comments = "";
+    private String driveTrainChosenOther = "";
+    private String wheelChosenOther = "";
+    private String driveMotorChosenOther = "";
+    private String programLangChosenOther = "";
 
     //Do not change, stays the same every year
     @Override
@@ -82,7 +85,13 @@ public class ScoutActivity extends AppCompatActivity{
                 if (groupPosition == 0){
                     String driveTrainChild = driveTrain.get(childPosition); //Drive Train type chosen
                     if (driveTrainChild.equals("Other")){
-                        startActivityForResult(new Intent(ScoutActivity.this,OtherPop.class), 1);
+                        Intent otherIntent = new Intent(ScoutActivity.this,OtherPop.class);
+                        if (!driveTrainChosenOther.equals("")){
+                            otherIntent.putExtra("prev", driveTrainChosenOther);
+                        } else {
+                            otherIntent.putExtra("prev", "");
+                        }
+                        startActivityForResult(otherIntent, 1);
                     } else {
                         driveTrainChosen = driveTrainChild;
                     }
@@ -90,7 +99,13 @@ public class ScoutActivity extends AppCompatActivity{
                 } else if (groupPosition == 1) {
                     String wheelChild = wheel.get(childPosition); //Wheel type chosen
                     if (wheelChild.equals("Other")){
-                        startActivityForResult(new Intent(ScoutActivity.this,OtherPop.class), 2);
+                        Intent otherIntent = new Intent(ScoutActivity.this,OtherPop.class);
+                        if (!wheelChosenOther.equals("")){
+                            otherIntent.putExtra("prev", wheelChosenOther);
+                        } else {
+                            otherIntent.putExtra("prev", "");
+                        }
+                        startActivityForResult(otherIntent, 2);
                     } else {
                         wheelChosen = wheelChild;
                     }
@@ -98,7 +113,13 @@ public class ScoutActivity extends AppCompatActivity{
                 } else if (groupPosition == 2){
                     String driveMotorChild = driveMotor.get(childPosition); //Drive Train Motor type chosen
                     if (driveMotorChild.equals("Other")){
-                        startActivityForResult(new Intent(ScoutActivity.this,OtherPop.class), 3);
+                        Intent otherIntent = new Intent(ScoutActivity.this,OtherPop.class);
+                        if (!driveMotorChosenOther.equals("")){
+                            otherIntent.putExtra("prev", driveMotorChosenOther);
+                        } else {
+                            otherIntent.putExtra("prev", "");
+                        }
+                        startActivityForResult(otherIntent, 3);
                     } else {
                         driveMotorChosen = driveMotorChild;
                     }
@@ -106,7 +127,13 @@ public class ScoutActivity extends AppCompatActivity{
                 } else {
                     String programLangChild = programLang.get(childPosition); //Programming Language type chosen
                     if (programLangChild.equals("Other")){
-                        startActivityForResult(new Intent(ScoutActivity.this,OtherPop.class), 4);
+                        Intent otherIntent = new Intent(ScoutActivity.this,OtherPop.class);
+                        if (!programLangChosenOther.equals("")){
+                            otherIntent.putExtra("prev", programLangChosenOther);
+                        } else {
+                            otherIntent.putExtra("prev", "");
+                        }
+                        startActivityForResult(otherIntent, 4);
                     } else {
                         programLangChosen = programLangChild;
                     }
@@ -216,9 +243,11 @@ public class ScoutActivity extends AppCompatActivity{
         listView.requestLayout();
     }
 
-    //Dont worry about this...Joanne will clean it up
-    public void comments(View view){
-        startActivityForResult(new Intent(ScoutActivity.this,CommentsPop.class), 5);
+    //Do not change, stays the same every year
+    //Purpose: prevents user from pressing back on accident and losing everything
+    @Override
+    public void onBackPressed() {
+        startActivityForResult(new Intent(ScoutActivity.this,ExitPrompt.class), 5);
     }
 
     //Dont worry about this...Joanne will clean it up
@@ -228,35 +257,33 @@ public class ScoutActivity extends AppCompatActivity{
         switch(requestCode) {
             case (1) : {
                 if (resultCode == Activity.RESULT_OK) { //Drive Train Other option
-                    driveTrainChosen = "Other: " + data.getStringExtra("Other");
+                    driveTrainChosenOther = data.getStringExtra("Other");
+                    driveTrainChosen = "Other: " + driveTrainChosenOther;
                 }
                 break;
             }
             case (2) : {
                 if (resultCode == Activity.RESULT_OK) { //Wheel Type Other option
-                    wheelChosen = "Other: " + data.getStringExtra("Other");
+                    wheelChosenOther = data.getStringExtra("Other");
+                    wheelChosen = "Other: " + wheelChosenOther;
                 }
                 break;
             }
             case (3) : {
                 if (resultCode == Activity.RESULT_OK) { //Drive Train Motors Other option
-                    driveMotorChosen = "Other: " + data.getStringExtra("Other");
+                    driveMotorChosenOther = data.getStringExtra("Other");
+                    driveMotorChosen = "Other: " + driveMotorChosenOther;
                 }
                 break;
             }
             case (4) : {
                 if (resultCode == Activity.RESULT_OK) { //Drive Train Motors Other option
-                    programLangChosen = "Other: " + data.getStringExtra("Other");
+                    programLangChosenOther = data.getStringExtra("Other");
+                    programLangChosen = "Other: " + programLangChosenOther;
                 }
                 break;
             }
             case (5) : {
-                if (resultCode == Activity.RESULT_OK) { //Comments
-                    comments = data.getStringExtra("Comments");
-                }
-                break;
-            }
-            case (6) : {
                 if (resultCode == Activity.RESULT_OK) { //Back Arrow pressed
                     String choice = data.getStringExtra("Choice");
                     if (choice.equals("leave")){
@@ -607,12 +634,5 @@ public class ScoutActivity extends AppCompatActivity{
         } else {
             return "";
         }
-    }
-
-    //Do not change, stays the same every year
-    //Purpose: prevents user from pressing back on accident and losing everything
-    @Override
-    public void onBackPressed() {
-        startActivityForResult(new Intent(ScoutActivity.this,ExitPrompt.class), 6);
     }
 }
