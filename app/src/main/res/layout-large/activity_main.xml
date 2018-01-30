@@ -15,15 +15,13 @@
         <!--Left Margin-->
         <Space
             android:layout_width="20dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3" />
+            android:layout_height="match_parent"/>
 
         <!--Content-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_weight=".4"
             android:weightSum="1">
 
             <!--Top Section-->
@@ -38,41 +36,36 @@
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:weightSum="1"
-                    android:layout_weight="0.05">
+                    android:weightSum="1">
 
                     <!--Top Spacer-->
                     <Space
                         android:layout_width="match_parent"
-                        android:layout_height="30px"
-                        android:layout_weight="0.04" />
+                        android:layout_height="30px" />
 
                     <!--First Name Label-->
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:text="First Name: "
                         android:textSize= "20dp"
-                        android:id="@+id/firstName"
-                        android:layout_weight="0.25" />
+                        android:id="@+id/firstName" />
 
                     <!--Last Name Label-->
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:text="Last Name: "
                         android:textSize= "20dp"
-                        android:id="@+id/lastName"
-                        android:layout_weight="0.25" />
+                        android:id="@+id/lastName"/>
 
                     <!--Team Scouted Label-->
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:text="Team Scouted: "
                         android:textSize= "20dp"
-                        android:id="@+id/team"
-                        android:layout_weight="0.25" />
+                        android:id="@+id/team" />
 
                 </LinearLayout>
 
@@ -81,53 +74,47 @@
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:weightSum="1"
-                    android:layout_weight="0.8">
+                    android:weightSum="1">
 
                     <!--Top Margin-->
                     <Space
                         android:layout_width="match_parent"
-                        android:layout_height="25px"
-                        android:layout_weight="0.025" />
+                        android:layout_height="25px" />
 
                     <!--First Name Textbox-->
                     <EditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:id="@+id/editFirstName"
                         android:hint="@string/first_name"
                         android:textSize= "20dp"
                         android:inputType="text"
-                        android:singleLine="true"
-                        android:layout_weight="0.03" />
+                        android:singleLine="true" />
 
                     <!--Last Name Textbox-->
                     <EditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:id="@+id/editLastName"
                         android:hint="@string/last_name"
                         android:textSize= "20dp"
                         android:inputType="text"
-                        android:singleLine="true"
-                        android:layout_weight="0.03" />
+                        android:singleLine="true" />
 
                     <!--Team Scouted Textbox-->
                     <EditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:id="@+id/editTeam"
                         android:hint="Enter team scouted number"
                         android:textSize= "20dp"
                         android:inputType="number"
-                        android:singleLine="true"
-                        android:layout_weight="0.03" />
+                        android:singleLine="true" />
 
                     <!--Side Margin-->
                     <Space
                         android:layout_width="match_parent"
-                        android:layout_height="25px"
-                        android:layout_weight="0.020" />
+                        android:layout_height="25px" />
 
                 </LinearLayout>
 
