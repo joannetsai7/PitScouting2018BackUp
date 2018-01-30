@@ -19,6 +19,6 @@
         <!--android:theme="@style/AppTheme.CustomTheme"-->
         <activity android:name=".OtherPop" android:theme="@style/AppTheme.CustomTheme"></activity>
         <activity android:name=".ExitPrompt" android:theme="@style/AppTheme.CustomTheme"></activity>
-        <activity android:name=".ScoutPop" android:theme="@style/AppTheme.CustomTheme"></activity>
+        <activity android:name=".ScoutPop" android:theme="@style/AppTheme.NumberScouts"></activity>
     </application>
 </manifest>

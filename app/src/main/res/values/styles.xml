@@ -12,4 +12,8 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
+
+    <style name="AppTheme.NumberScouts">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
 </resources>

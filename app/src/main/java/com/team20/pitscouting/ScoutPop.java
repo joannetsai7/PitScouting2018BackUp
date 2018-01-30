@@ -34,4 +34,9 @@ public class ScoutPop extends Activity{
         setResult(Activity.RESULT_OK, resultIntent);
         finish();
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }
