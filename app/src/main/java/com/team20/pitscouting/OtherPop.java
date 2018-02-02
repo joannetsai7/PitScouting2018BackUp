@@ -29,7 +29,12 @@ public class OtherPop extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*.8),(int)(height*.2));
+        boolean tabletSize = getResources().getBoolean(R.bool.isTablet);
+        if (tabletSize) {
+            getWindow().setLayout((int)(width*.8),(int)(height*.2));
+        } else {
+            getWindow().setLayout((int)(width*.8),(int)(height*.35));
+        }
     }
 
 

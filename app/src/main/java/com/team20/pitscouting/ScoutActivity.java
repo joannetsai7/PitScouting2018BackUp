@@ -165,9 +165,9 @@ public class ScoutActivity extends AppCompatActivity{
     //Do not change, stays the same every year
     private void initData(){
         listDataHolder.add("Drive Train");
-        driveTrain.add("4 wheel tank");
-        driveTrain.add("6 wheel tank");
-        driveTrain.add("8 wheel tank");
+        driveTrain.add("4 wheel");
+        driveTrain.add("6 wheel");
+        driveTrain.add("8 wheel");
         driveTrain.add("Mecanum");
         driveTrain.add("Omni drive");
         driveTrain.add("Swerve");

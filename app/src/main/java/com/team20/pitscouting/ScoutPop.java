@@ -23,7 +23,6 @@ public class ScoutPop extends Activity{
         int height = dm.heightPixels;
 
         boolean tabletSize = getResources().getBoolean(R.bool.isTablet);
-        System.err.println("TABLETTTTT"+tabletSize);
         if (tabletSize) {
             getWindow().setLayout((int)(width*.8),(int)(height*.2));
         } else {
